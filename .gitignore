@@ -1,2 +1,3 @@
 services/web/env
+services/web/project/__pycache__
 .idea/
