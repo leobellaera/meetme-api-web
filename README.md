@@ -2,5 +2,7 @@
 
 # Cómo levantar localmente los servicios
 
+```
 docker-compose build
 docker-compose up
+```
