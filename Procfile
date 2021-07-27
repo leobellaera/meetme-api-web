@@ -1,1 +1,1 @@
-web: gunicorn meet_me_web.app:app
+web: gunicorn app:app
