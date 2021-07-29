@@ -1,4 +1,5 @@
 from flask_restx import Resource, Api
+from namespaces.users import ns as users_namespace
 
 api = Api(
     prefix="/v1",
@@ -7,8 +8,10 @@ api = Api(
     validate=True,
 )
 
+api.add_namespace(users_namespace)
 
-@api.route('')
-class HelloWorld(Resource):
-    def get(self):
-        return {'hello': 'world'}
+
+@api.errorhandler
+def default_error_handler(e):
+    message = "An unhandled exception occurred."
+    return {"message": message}, 500
