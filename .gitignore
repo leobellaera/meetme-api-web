@@ -3,4 +3,5 @@ services/web/project/__pycache__
 .idea/
 __pycache__/
 migrations/__pycache__
-
+meet_me
+meet_me.db

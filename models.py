@@ -1,12 +1,13 @@
 import os
 from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import func
 
 db = SQLAlchemy()
 
 
 def setup_db(app):
-    database_path = os.getenv('DATABASE_URL', 'sqlite:////meet_me.db')
+    database_path = os.getenv('DATABASE_URL', 'sqlite:///meet_me.db')
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
@@ -17,24 +18,13 @@ def db_drop_and_create_all():
     db.create_all()
 
 
-class Movie(db.Model):
-    __tablename__ = 'movies'
-    id = Column(Integer, primary_key=True)
-    title = Column(String(80), unique=True)
-    release_date = Column(db.DateTime)
-    def __init__(self, title, release_date):
-        self.title = title
-        self.release_date = release_date
-    def details(self):
-        return {
-            'id': self.id,
-            'title': self.title,
-            'release_date': self.release_date,
-        }
-    def insert(self):
-        db.session.add(self)
-        db.session.commit()
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    first_name = db.Column(db.String, nullable=False)
+    last_name = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, unique=True, nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    gender = db.Column(db.String, nullable=False)
+    gender_interests = db.Column(db.String, nullable=False)
+    interests = db.Column(db.String, nullable=True)
+    register_date = db.Column(db.String, nullable=True, default=func.now())
