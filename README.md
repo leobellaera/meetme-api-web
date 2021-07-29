@@ -19,4 +19,5 @@ Para ver las tablas creadas en SQLite:
 
 ## DB Produccion 
 
-- `python manage.py db upgrade` (previamente habiendo pusheado el archivo con las migraciones a master)
+- `heroku login`
+- `heroku run python manage.py db upgrade` (previamente habiendo pusheado el archivo con las migraciones a master)
