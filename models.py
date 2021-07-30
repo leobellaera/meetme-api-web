@@ -18,7 +18,6 @@ def db_drop_and_create_all():
 
 class Like(db.Model):
     __tablename__ = 'like'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_1 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     user_2 = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
     user_1_liked = db.Column(db.Boolean, nullable=False)
@@ -36,5 +35,3 @@ class User(db.Model):
     gender_interests = db.Column(db.String, nullable=False)
     interests = db.Column(db.String, nullable=True)
     register_date = db.Column(db.String, nullable=True, default=func.now())
-    user_1 = db.relationship('Like',backref='user_1', primaryjoin=id==Like.user_1)
-    user_2 = db.relationship('Like',backref='user_2', primaryjoin=id==Like.user_2)
