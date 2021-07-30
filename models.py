@@ -1,5 +1,4 @@
 import os
-from sqlalchemy import Column, String, Integer
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 
@@ -31,6 +30,7 @@ class User(db.Model):
     first_name = db.Column(db.String, nullable=False)
     last_name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
+    password = db.Column(db.String, nullable=True)
     age = db.Column(db.Integer, nullable=False)
     gender = db.Column(db.String, nullable=False)
     gender_interests = db.Column(db.String, nullable=False)
