@@ -8,7 +8,7 @@
 
 Para correr las migraciones ejecutar:
 
-- `python manage.py db migrate -m 'comment'>`
+- `python manage.py db migrate -m 'comment'`
 - `python manage.py db upgrade`
 
 Para ver las tablas creadas en SQLite:
